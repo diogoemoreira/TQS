@@ -28,4 +28,4 @@ Now to generate the JaCoCo report we simply need to run mvn test jacoco:report
 
 The class that offered the least coverage was the CuponEuromillions with 40% instructions coverage and 0% branches coverage the reason for this is because 'format()' was not tested.
 
-Most of the decision branches have ben covered although there are still some branches that have not been exercised such as the equals method in 'Dip' class.
+Most of the decision branches have been covered although there are still some branches that have not been exercised like in the 'equals()' method in 'Dip' class.
