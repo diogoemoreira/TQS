@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 class StocksPortfolioTest {
 
@@ -25,5 +27,8 @@ class StocksPortfolioTest {
         //5.Verify the result (assert) and the use of the mock (verify)
         assertEquals(14.0, portfolio.getTotalValue());
         verify(market, times(2)).getPrice(anyString());
+
+        //Hamcrest
+        assertThat(portfolio.getTotalValue(), is(14.0));
     }
 }
