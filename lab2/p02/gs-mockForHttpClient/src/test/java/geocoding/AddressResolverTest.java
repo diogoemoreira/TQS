@@ -19,6 +19,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class AddressResolverTest {
 
+    //The service to Mock is the REST interface
     @Mock
     ISimpleHttpClient httpClient;
 
@@ -44,7 +45,7 @@ class AddressResolverTest {
     public void whenBadCoordidates_throwBadArrayindex() throws IOException, URISyntaxException, ParseException {
 
         String jsonBadAnswer = "{\"info\":{\"statuscode\":0,\"copyright\":{\"text\":\"\\u00A9 2021 MapQuest, Inc.\",\"imageUrl\":\"http://api.mqcdn.com/res/mqlogo.gif\",\"imageAltText\":\"\\u00A9 2021 MapQuest, Inc.\"},\"messages\":[]},\"options\":{\"maxResults\":1,\"thumbMaps\":true,\"ignoreLatLngInput\":false},\"results\":[{\"providedLocation\":{\"latLng\":{\"lat\":999.0,\"lng\":-999.0}},\"locations\":[]}]}";
-        when(httpClient.get(contains("location=999.000000%2C999.000000"))).thenReturn(jsonError);
+        when(httpClient.get(contains("location=999.000000%2C999.000000"))).thenReturn(jsonBadAnswer);
 
         assertThrows(IndexOutOfBoundsException.class, () -> {resolver.findAddressForLocation(999, 999);});
     }
